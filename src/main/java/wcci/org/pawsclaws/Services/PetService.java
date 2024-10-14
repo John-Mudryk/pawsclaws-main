@@ -1,9 +1,12 @@
 package wcci.org.pawsclaws.Services;
+
 import java.util.*;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import wcci.org.pawsclaws.DTO.*;
 
@@ -24,11 +27,17 @@ public class PetService {
 
     public PetDTO getPetById(long id) {
         String url = server + "/api/v1/shelter/" + id;
-        PetDTO pet = restTemplate.getForObject(url, PetDTO.class);
-        return pet;
+        try {
+            return restTemplate.getForObject(url, PetDTO.class);
+        } catch (HttpClientErrorException ex) {
+            if (ex.getStatusCode() == HttpStatus.BAD_REQUEST) {
+                return null; // Pet not found, return null
+            }
+            throw ex; // Re-throw other errors
+        }
     }
 
-    public PetDTO saveAdd(AdmissionDTO admit){
+    public PetDTO saveAdd(AdmissionDTO admit) {
         String url = server + "/api/v1/shelter";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
@@ -37,7 +46,7 @@ public class PetService {
         return pet;
     }
 
-    public PetDTO saveEdit(EditPetDTO edit){
+    public PetDTO saveEdit(EditPetDTO edit) {
         String url = server + "/api/v1/shelter";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
@@ -46,7 +55,7 @@ public class PetService {
         return pet;
     }
 
-    public StatusDTO carePet(long id, String action){
+    public StatusDTO carePet(long id, String action) {
         String url = server + "/api/v1/shelter/" + action + "/" + id;
         StatusDTO status = restTemplate.getForObject(url, StatusDTO.class);
         return status;

@@ -10,9 +10,9 @@
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
     <h1>Error Message</h1>
-    <label th:text="errorData.errorMessage"></label>
-    <label th:text="errorData.errorCode"></label>
-    <a class="button-link" href="/home"></a>
+    <p>An error has occurred. Please try again later</p>
+    <p th:text="${errorMessage}">Error occurred while processing your request.</p>
+    <a class="button-link" href="/home">Back to Home</a>
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title th:text="${title}">DISCUS</title>
+    <script>
+        function confirmAdoption(event, url) {
+            const confirmation = confirm("Are you sure you want to adopt this pet?");
+            if (!confirmation) {
+                event.preventDefault(); // Prevent the default action (navigation)
+                return false; // Stop the link from being followed
+            }
+            // If confirmed, allow the link to be followed
+            window.location.href = "http://localhost:8082/home"
+            return true; // Allow the link to be followed
+        }
+    </script>
 </head>
 
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
-    <a href="/create">Admit a Pet</a>
+    <!-- <a href="/create">Admit a Pet</a> -->
     <table>
         <thead>
             <tr>
@@ -29,7 +41,7 @@
                 <td>
                     <a class="button-link" href="$" th:href="@{/details/{id}(id=${pet.id})}">Details</a>
                     <a class="button-link" href="$" th:href="@{/edit/{id}(id=${pet.id})}">Edit</a>
-                    <a class="button-link" th:href="@{/adoptPet/{id}(id=${pet.id})}">Adopt</a>
+                    <a class="button-link" th:href="@{/adoptPet/{id}(id=${pet.id})}" onclick="return confirmAdoption(event, this.href);">Adopt</a>
 
                 </td>
             </tr>
