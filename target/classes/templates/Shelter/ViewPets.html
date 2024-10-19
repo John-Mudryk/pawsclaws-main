@@ -22,6 +22,7 @@
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
     <!-- <a href="/create">Admit a Pet</a> -->
+     <div class="content">
     <table>
         <thead>
             <tr>
@@ -37,7 +38,7 @@
                 <td th:text="${pet.name}"></td>
                 <td th:text="${pet.age}"></td>
                 <td th:text="${pet.petType}"></td>
-                <td th:text="${pet.status}"></td>
+                <td class="pet-status" th:utext="${pet.status}"></td>
                 <td>
                     <a class="button-link" href="$" th:href="@{/details/{id}(id=${pet.id})}">Details</a>
                     <a class="button-link" href="$" th:href="@{/edit/{id}(id=${pet.id})}">Edit</a>
@@ -47,6 +48,7 @@
             </tr>
         </tbody>
     </table>
+    </div>
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

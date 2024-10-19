@@ -9,10 +9,14 @@
 
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
-    <h1>Error Message</h1>
-    <p>An error has occurred. Please try again later</p>
-    <p th:text="${errorMessage}">Error occurred while processing your request.</p>
-    <a class="button-link" href="/home">Back to Home</a>
+    <div class="content">
+        <div class="contact-container">
+            <h1>Error Message</h1>
+            <p>An error has occurred. Please try again later</p>
+            <p th:text="${errorMessage}">Error occurred while processing your request.</p>
+            <a class="button-link" href="/home">Back to Home</a>
+        </div>
+    </div>
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

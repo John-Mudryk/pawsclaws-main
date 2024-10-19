@@ -8,7 +8,8 @@
 </head>
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
-    <form action="#" th:action="@{/saveedit}" method="post" th:object="${pet}">
+    <div class="content">
+    <form class="contact-container" action="#" th:action="@{/saveedit}" method="post" th:object="${pet}">
         <div>
             <label>Name</label>
             <input type="text" name="petName" th:field="${pet.name}"/>
@@ -23,6 +24,7 @@
         <button type="submit"> Submit </button>
         <a class="button-link" href="/home">Cancel</a>
     </form>
+    </div>
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

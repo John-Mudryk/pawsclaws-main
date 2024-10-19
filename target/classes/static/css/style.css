@@ -5,13 +5,14 @@
 }
 body {
     font-family: arial, sans-serif;
-    line-height: 1.6;
-    background-color: rgb(48, 48, 48);
+    line-height: 1.6rem;
+    background: linear-gradient(rgb(116, 116, 116), rgb(36, 36, 36));
+
 }
 header {
     background-color: darkslategrey;
     color: #a8a8a8;
-    padding: 20px 0;
+    padding: 1.5rem 0;
     text-align: center;
 }
 header nav ul {
@@ -21,13 +22,13 @@ header nav ul {
 }
 header nav ul li {
     display: inline;
-    margin-right: 15px;
+    margin-right: 1rem;
 }
 header nav ul li a {
     color: lightgray;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 0.5rem 1rem;
     border-radius: 3px;
     transition: background-color 0.3s ease;
 }
@@ -52,39 +53,44 @@ table {
     border-collapse: collapse;
     width: 80%;
     text-align: left;
-    margin-bottom: 50px ;
+    margin-bottom: 2.5rem;
+    background-color: rgb(43, 43, 43);
 }
 table th, table td {
-    border: 4px darkslategrey double;
-    padding: 10px;
+    border: 0.25rem darkslategrey double;
+    padding: 1rem;
     text-align: center;
 }
 table th {
     background-color: darkslategrey;
+    padding: .5rem
 }
 button {
-    padding: 10px 20px;
+    padding: 0.625rem 1.5rem;
     background-color: #575757;
     border: none;
     color: lightgray;
     text-align: center;
     text-decoration: none;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 1rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 button:hover {
     background-color: #727272;
 }
+img{
+    padding: 1.25rem 0;
+}
 .button-link {
     display: inline-block;
-    padding: 6.35px 20px;
+    padding: 0.4rem 1.5rem;
     background-color: #575757;
     color: lightgray;
     text-align: center;
     text-decoration: none;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 1rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 .button-link:hover {
@@ -96,10 +102,35 @@ button:hover {
     margin-bottom: 7%;
 }
 .action-button a{
-    margin: 0 10px;
+    margin: 0 1rem;
 }
 .action-status {
     width: 100%;
     text-align: center;
     margin-bottom: 1%;
+}
+.pet-status {
+    text-align: left;
+    padding-left: 2rem;
+}
+.center-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.content {
+    padding: 1.25rem 1.25rem;
+    padding-bottom: 10rem;
+    height: calc(100vh - 0.75rem);
+    overflow-y: auto;
+    margin-top: 1.25rem;
+}
+.contact-container {
+    max-width: 40rem;
+    margin: 0.3rem auto;
+    background-color: rgb(48, 48, 48);
+    padding: 1rem;
+    box-shadow: 0 0.1rem 0.9rem rgba(0, 0, 0, 0.11); 
+    border-radius: 0.7rem;
 }

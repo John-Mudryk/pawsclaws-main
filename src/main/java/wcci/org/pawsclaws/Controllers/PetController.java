@@ -55,10 +55,12 @@ public class PetController {
             return "Shelter/ErrorMessage"; // Redirect to an error page
         }
         try {
-            pet.setStatus(pet.getStatus().replace("/n", "<br/>"));
+            // pet.setStatus(pet.getStatus().replace("/n", "<br/>"));
             model.addAttribute("pet", pet);
             model.addAttribute("title", "Details for " + pet.getName());
             model.addAttribute("status", status);
+            String image = service.getPetImage(pet.getName(), pet.getPetType().toString());
+            model.addAttribute("image", image);
             return "Shelter/ViewDetails";
         } catch (HttpClientErrorException ex) {
             if (ex.getStatusCode() == HttpStatus.BAD_REQUEST) {
@@ -180,10 +182,10 @@ public class PetController {
                     "Pet not found. It might have been adopted, died, or is no longer in the shelter.");
             return "Shelter/ErrorMessage"; // Redirect to error page
         }
-        model.addAttribute("pet", pet);
-        model.addAttribute("title", "Details for " + pet.getName());
-        model.addAttribute("petTypes", PetType.values());
-        model.addAttribute("status", status);
+            model.addAttribute("pet", pet);
+            model.addAttribute("title", "Details for " + pet.getName());
+            model.addAttribute("petTypes", PetType.values());
+            model.addAttribute("status", status);
         return "Shelter/ViewDetails";
     }
 

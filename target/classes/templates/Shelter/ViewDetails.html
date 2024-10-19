@@ -8,6 +8,10 @@
 </head>
 <body>
     <div th:insert="fragments/Header :: siteHeader"></div>
+    <div class="content">
+            <span class="center-img">
+            <img th:src="${image}" alt="picture of pet" width="20%" height="20%">
+            </span>
     <table>
         <tr>
             <td>Name</td><td th:text="${pet.name}"></td>
@@ -48,12 +52,7 @@
                 <span th:unless="${pet.isRobot()}" th:text="${pet.thirst} + '%'"></span>
             </td>
         </tr>
-        <tr>
-            <td>Status</td><td th:text="${pet.status}"></td>
-        </tr>
     </table>
-    <div class="action-status">
-        <p th:text="${status.status}"></p>
     </div>
     
     <div class="action-button">
