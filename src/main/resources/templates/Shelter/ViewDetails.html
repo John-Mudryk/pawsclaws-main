@@ -1,67 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Sets character encoding for proper text display -->
     <meta charset="UTF-8">
+    <!-- Ensures the webpage scales properly on different devices for a responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Links to the CSS stylesheet, using Thymeleaf for path resolution -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Dynamically sets the page title using a Thymeleaf expression -->
     <title th:text="${title}">DISCUS</title>
 </head>
 <body>
+    <!-- Inserts the header fragment, which typically includes navigation, using Thymeleaf -->
     <div th:insert="fragments/Header :: siteHeader"></div>
+    
     <div class="content">
-            <span class="center-img">
+        <!-- Displays an image centered on the page, using a dynamic source path -->
+        <span class="center-img">
             <img th:src="${image}" alt="picture of pet" width="20%" height="20%">
-            </span>
-    <table>
-        <tr>
-            <td>Name</td><td th:text="${pet.name}"></td>
+        </span>
+        
+        <!-- Table to display pet information -->
+        <table>
+            <tr>
+                <td>Name</td>
+                <!-- Dynamically displays the pet's name -->
+                <td th:text="${pet.name}"></td>
             </tr>
-        </tr>
-            <td>Age</td><td th:text="${pet.age}"></td>
+            <tr>
+                <td>Age</td>
+                <!-- Dynamically displays the pet's age -->
+                <td th:text="${pet.age}"></td>
             </tr>
-        </tr>
-        <tr>
-            <td>Type</td><td th:text="${pet.petType}"></td>
-        </tr>
-        <tr>
-            <td>DeathBy</td><td th:text="${pet.deathBy}"></td>
-        </tr>
-        <tr>
-            <td>Health</td><td th:text="${pet.health} + '%'"></td>
-        </tr>
-        <tr>
-            <td>Happiness</td><td th:text="${pet.happiness} + '%'"></td>
-        </tr>
-        <tr>
-            <td>
-                <span th:if="${pet.isRobot()}">Battery</span>
-                <span th:unless="${pet.isRobot()}">Hunger</span>
-            </td>
-            <td>
-                <span th:if="${pet.isRobot()}" th:text="${pet.battery} + '%'"></span>
-                <span th:unless="${pet.isRobot()}" th:text="${pet.hunger} + '%'"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span th:if="${pet.isRobot()}">Oil</span>
-                <span th:unless="${pet.isRobot()}">Thirst</span>
-            </td>
-            <td>
-                <span th:if="${pet.isRobot()}" th:text="${pet.oil} + '%'"></span>
-                <span th:unless="${pet.isRobot()}" th:text="${pet.thirst} + '%'"></span>
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td>Type</td>
+                <!-- Dynamically displays the pet's type (e.g., Dog, Cat) -->
+                <td th:text="${pet.petType}"></td>
+            </tr>
+            <tr>
+                <td>DeathBy</td>
+                <!-- Displays the cause of death if the pet has died -->
+                <td th:text="${pet.deathBy}"></td>
+            </tr>
+            <tr>
+                <td>Health</td>
+                <!-- Shows the pet's health percentage -->
+                <td th:text="${pet.health} + '%'"></td>
+            </tr>
+            <tr>
+                <td>Happiness</td>
+                <!-- Displays the pet's happiness level -->
+                <td th:text="${pet.happiness} + '%'"></td>
+            </tr>
+            <tr>
+                <!-- Conditionally displays "Battery" for robots, "Hunger" for regular pets -->
+                <td>
+                    <span th:if="${pet.isRobot()}">Battery</span>
+                    <span th:unless="${pet.isRobot()}">Hunger</span>
+                </td>
+                <!-- Dynamically shows the battery level or hunger percentage based on pet type -->
+                <td>
+                    <span th:if="${pet.isRobot()}" th:text="${pet.battery} + '%'"></span>
+                    <span th:unless="${pet.isRobot()}" th:text="${pet.hunger} + '%'"></span>
+                </td>
+            </tr>
+            <tr>
+                <!-- Displays "Oil" for robots, "Thirst" for regular pets based on condition -->
+                <td>
+                    <span th:if="${pet.isRobot()}">Oil</span>
+                    <span th:unless="${pet.isRobot()}">Thirst</span>
+                </td>
+                <!-- Dynamically shows the oil level or thirst percentage -->
+                <td>
+                    <span th:if="${pet.isRobot()}" th:text="${pet.oil} + '%'"></span>
+                    <span th:unless="${pet.isRobot()}" th:text="${pet.thirst} + '%'"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <!-- Action buttons for caring for the pet -->
+        <div class="action-button">
+            <!-- Links to feed, water, play, and heal actions, using the pet's ID -->
+            <a class="button-link" href="$" th:href="@{/feed/{id}(id=${pet.id})}">Feed</a>
+            <a class="button-link" href="$" th:href="@{/water/{id}(id=${pet.id})}">Water</a>
+            <a class="button-link" href="$" th:href="@{/play/{id}(id=${pet.id})}">Play</a>
+            <a class="button-link" href="$" th:href="@{/heal/{id}(id=${pet.id})}">Heal</a>
+        </div>
     </div>
     
-    <div class="action-button">
-        <a class="button-link" href="$" th:href="@{/feed/{id}(id=${pet.id})}">Feed</a>
-        <a class="button-link" href="$" th:href="@{/water/{id}(id=${pet.id})}">Water</a>
-        <a class="button-link" href="$" th:href="@{/play/{id}(id=${pet.id})}">Play</a>
-        <a class="button-link" href="$" th:href="@{/heal/{id}(id=${pet.id})}">Heal</a>
-    </div>
+    <!-- Inserts the footer fragment, typically containing site information, using Thymeleaf -->
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
-
 </html>

@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Specifies the character encoding for the document -->
     <meta charset="UTF-8">
+    <!-- Sets the viewport for responsive design on different devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Links to the CSS stylesheet using Thymeleaf for dynamic path resolution -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Dynamically sets the page title using a Thymeleaf expression -->
     <title th:text="${title}">DISCUS</title>
+    
+    <!-- JavaScript function for confirming the adoption action -->
     <script>
+        /**
+         * Function to confirm if the user wants to proceed with the adoption action.
+         * @param {Event} event - The event triggered by clicking the Adopt link.
+         * @param {string} url - The URL that the link points to.
+         * @returns {boolean} - Returns true if confirmed, otherwise false.
+         */
         function confirmAdoption(event, url) {
             const confirmation = confirm("Are you sure you want to adopt this pet?");
             if (!confirmation) {
@@ -13,42 +25,55 @@
                 return false; // Stop the link from being followed
             }
             // If confirmed, allow the link to be followed
-            window.location.href = "http://localhost:8082/home"
+            window.location.href = "http://localhost:8082/home";
             return true; // Allow the link to be followed
         }
     </script>
 </head>
 
 <body>
+    <!-- Inserts the header fragment, typically containing navigation links -->
     <div th:insert="fragments/Header :: siteHeader"></div>
-    <!-- <a href="/create">Admit a Pet</a> -->
-     <div class="content">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="pet:${pets}">
-                <td th:text="${pet.name}"></td>
-                <td th:text="${pet.age}"></td>
-                <td th:text="${pet.petType}"></td>
-                <td class="pet-status" th:utext="${pet.status}"></td>
-                <td>
-                    <a class="button-link" href="$" th:href="@{/details/{id}(id=${pet.id})}">Details</a>
-                    <a class="button-link" href="$" th:href="@{/edit/{id}(id=${pet.id})}">Edit</a>
-                    <a class="button-link" th:href="@{/adoptPet/{id}(id=${pet.id})}" onclick="return confirmAdoption(event, this.href);">Adopt</a>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    
+    <!-- Main content section -->
+    <div class="content">
+        <!-- Table to display the list of pets with their details -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate through the list of pets using Thymeleaf and display each pet's information -->
+                <tr th:each="pet:${pets}">
+                    <!-- Display the pet's name -->
+                    <td th:text="${pet.name}"></td>
+                    <!-- Display the pet's age -->
+                    <td th:text="${pet.age}"></td>
+                    <!-- Display the pet's type (e.g., Dog, Cat) -->
+                    <td th:text="${pet.petType}"></td>
+                    <!-- Display the pet's status, allowing HTML content to be inserted -->
+                    <td class="pet-status" th:utext="${pet.status}"></td>
+                    <!-- Action buttons for viewing details, editing, or adopting the pet -->
+                    <td>
+                        <!-- Link to view detailed information about the pet -->
+                        <a class="button-link" href="$" th:href="@{/details/{id}(id=${pet.id})}">Details</a>
+                        <!-- Link to edit the pet's details -->
+                        <a class="button-link" href="$" th:href="@{/edit/{id}(id=${pet.id})}">Edit</a>
+                        <!-- Link to adopt the pet, with a confirmation prompt before proceeding -->
+                        <a class="button-link" th:href="@{/adoptPet/{id}(id=${pet.id})}" onclick="return confirmAdoption(event, this.href);">Adopt</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
+    <!-- Inserts the footer fragment, typically containing site information or copyright details -->
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Specifies the character encoding for the document -->
     <meta charset="UTF-8">
+    <!-- Sets the viewport to ensure proper scaling on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Links to the CSS stylesheet using Thymeleaf for dynamic resolution -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Dynamically sets the title using a Thymeleaf expression -->
     <title th:text="${title}">DISCUS</title>
 </head>
 
 <body>
+    <!-- Inserts the header fragment, typically containing site navigation -->
     <div th:insert="fragments/Header :: siteHeader"></div>
+    
+    <!-- Main content placeholder -->
     <!-- Code goes here -->
+    
+    <!-- Inserts the footer fragment, typically containing site-wide footer content -->
     <div th:insert="fragments/Footer :: siteFooter"></div>
 </body>
 </html>

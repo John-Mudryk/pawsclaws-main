@@ -1,40 +1,54 @@
+/* Reset margins, padding, and ensure consistent box sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Basic body styling */
 body {
     font-family: arial, sans-serif;
     line-height: 1.6rem;
     background: linear-gradient(rgb(116, 116, 116), rgb(36, 36, 36));
-
 }
+
+/* Header styling */
 header {
     background-color: darkslategrey;
     color: #a8a8a8;
     padding: 1.5rem 0;
     text-align: center;
 }
+
+/* Remove list styles and reset margin/padding for nav */
 header nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
+/* Inline display for navigation items with spacing */
 header nav ul li {
     display: inline;
     margin-right: 1rem;
 }
+
+/* Style for navigation links */
 header nav ul li a {
     color: lightgray;
     text-decoration: none;
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 3px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
 }
+
+/* Change background on hover for nav links */
 header nav ul li a:hover {
     background-color: #575757;
 }
+
+/* Footer styling, fixed to the bottom of the page */
 footer {
     background-color: #575757;
     color: lightgray;
@@ -44,10 +58,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Footer text styling */
 footer p {
     margin: 0;
     font-size: 14px;
 }
+
+/* Table styling, centered with collapsed borders */
 table {
     margin: 0 auto;
     border-collapse: collapse;
@@ -56,18 +74,24 @@ table {
     margin-bottom: 2.5rem;
     background-color: rgb(43, 43, 43);
 }
+
+/* Padding and border for table cells */
 table th, table td {
     border: 0.25rem darkslategrey double;
     padding: 1rem;
     text-align: center;
 }
+
+/* Styling for table headers */
 table th {
     background-color: darkslategrey;
-    padding: .5rem
+    padding: .5rem;
 }
+
+/* General button styling */
 button {
     padding: 0.625rem 1.5rem;
-    background-color: #575757;
+    background-color: darkslategrey;
     border: none;
     color: lightgray;
     text-align: center;
@@ -76,16 +100,22 @@ button {
     font-size: 1rem;
     cursor: pointer;
 }
+
+/* Change background on hover for buttons */
 button:hover {
     background-color: #727272;
 }
-img{
+
+/* Add padding around images */
+img {
     padding: 1.25rem 0;
 }
+
+/* Styling for buttons that act as links */
 .button-link {
     display: inline-block;
     padding: 0.4rem 1.5rem;
-    background-color: #575757;
+    background-color: darkslategrey;
     color: lightgray;
     text-align: center;
     text-decoration: none;
@@ -93,32 +123,46 @@ img{
     font-size: 1rem;
     cursor: pointer;
 }
+
+/* Change background on hover for link buttons */
 .button-link:hover {
     background-color: #727272;
 }
+
+/* Container for action buttons, centered on the page */
 .action-button {
     width: 100%;
     text-align: center;
-    margin-bottom: 7%;
+    margin: 3rem;
 }
-.action-button a{
+
+/* Add spacing between action links */
+.action-button a {
     margin: 0 1rem;
 }
+
+/* Center and add margin to action status elements */
 .action-status {
     width: 100%;
     text-align: center;
-    margin-bottom: 1%;
+    margin-bottom: 1rem;
 }
+
+/* Left-align pet status information */
 .pet-status {
     text-align: left;
     padding-left: 2rem;
 }
+
+/* Center images within a container */
 .center-img {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
+
+/* Content container with padding and overflow settings */
 .content {
     padding: 1.25rem 1.25rem;
     padding-bottom: 10rem;
@@ -126,6 +170,8 @@ img{
     overflow-y: auto;
     margin-top: 1.25rem;
 }
+
+/* Container styling for contact forms or similar elements */
 .contact-container {
     max-width: 40rem;
     margin: 0.3rem auto;
